@@ -2,6 +2,6 @@
 set -ex
 
 
-cd src
+cd multi-view-prompting/src
 
 python data_process/process_unify.py

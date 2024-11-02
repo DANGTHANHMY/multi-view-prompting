@@ -13,12 +13,7 @@ import torch
 import transformers
 from transformers.models.t5.modeling_t5 import T5PreTrainedModel, T5Stack
 from transformers.file_utils import ModelOutput
-#from transformers import  add_start_docstrings, add_start_docstrings_to_model_forward, replace_return_docstrings
-from .file_utils import (
-    add_start_docstrings,
-    add_start_docstrings_to_model_forward,
-    replace_return_docstrings,
-)
+#from transformers import  add_start_docstrings
 import copy
 import warnings
 
@@ -65,8 +60,8 @@ DEPARALLELIZE_DOCSTRING = r"""
     ```
 """
 
-add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
-@add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
+#add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
+#@add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
 class MyT5ForConditionalGeneration(T5PreTrainedModel):
     authorized_missing_keys = [r"encoder\.embed_tokens\.weight", r"decoder\.embed_tokens\.weight", r"lm_head\.weight"]
 
@@ -108,8 +103,8 @@ class MyT5ForConditionalGeneration(T5PreTrainedModel):
     def get_decoder(self):
         return self.decoder
 
-    @add_start_docstrings_to_model_forward(T5_INPUTS_DOCSTRING)
-    @replace_return_docstrings(output_type=transformers.modeling_outputs.Seq2SeqLMOutput(), config_class=_CONFIG_FOR_DOC)
+    #@add_start_docstrings_to_model_forward(T5_INPUTS_DOCSTRING)
+    #@replace_return_docstrings(output_type=transformers.modeling_outputs.Seq2SeqLMOutput(), config_class=_CONFIG_FOR_DOC)
     def forward(
         self,
         input_ids=None,

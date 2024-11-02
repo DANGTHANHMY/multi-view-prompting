@@ -12,7 +12,6 @@ from torch.nn import CrossEntropyLoss
 import torch
 import transformers
 from transformers.models.t5.modeling_t5 import T5PreTrainedModel, T5Stack
-from transformers.file_utils import ModelOutput
 #from transformers import  add_start_docstrings
 import copy
 import warnings

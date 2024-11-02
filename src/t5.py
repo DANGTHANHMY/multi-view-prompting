@@ -8,10 +8,19 @@
 # import copy
 
 import torch.nn as nn
+from torch.nn import CrossEntropyLoss
 import torch
+import transformers
 from transformers.models.t5.modeling_t5 import T5PreTrainedModel, T5Stack
 from transformers.file_utils import ModelOutput
-from transformers import Seq2SeqLMOutput, CrossEntropyLoss, add_start_docstrings, add_start_docstrings_to_model_forward, replace_return_docstrings
+from transformers import  add_start_docstrings, add_start_docstrings_to_model_forward, replace_return_docstrings
+# from .file_utils import (
+#     ModelOutput,
+#     add_code_sample_docstrings,
+#     add_start_docstrings,
+#     add_start_docstrings_to_callable,
+#     replace_return_docstrings,
+# )
 import copy
 import warnings
 
@@ -102,7 +111,7 @@ class MyT5ForConditionalGeneration(T5PreTrainedModel):
         return self.decoder
 
     @add_start_docstrings_to_model_forward(T5_INPUTS_DOCSTRING)
-    @replace_return_docstrings(output_type=Seq2SeqLMOutput, config_class=_CONFIG_FOR_DOC)
+    @replace_return_docstrings(output_type=transformers.modeling_outputs.Seq2SeqLMOutput(), config_class=_CONFIG_FOR_DOC)
     def forward(
         self,
         input_ids=None,
@@ -236,7 +245,7 @@ class MyT5ForConditionalGeneration(T5PreTrainedModel):
             output = (lm_logits,) + decoder_outputs[1:] + encoder_outputs
             return ((loss,) + output) if loss is not None else output
 
-        return Seq2SeqLMOutput(
+        return transformers.modeling_outputs.Seq2SeqLMOutput(
             loss=loss,
             logits=lm_logits,
             past_key_values=decoder_outputs.past_key_values,
@@ -247,6 +256,16 @@ class MyT5ForConditionalGeneration(T5PreTrainedModel):
             encoder_hidden_states=encoder_outputs.hidden_states,
             encoder_attentions=encoder_outputs.attentions,
         )
+    
+    # transformers.modeling_outputs.Seq2SeqLMOutput(
+    # loss: Optional[torch.FloatTensor] = None, 
+    # logits: torch.FloatTensor = None, 
+    # past_key_values: Optional[List[torch.FloatTensor]] = None, 
+    # decoder_hidden_states: Optional[Tuple[torch.FloatTensor]] = None, 
+    # decoder_attentions: Optional[Tuple[torch.FloatTensor]] = None, 
+    # encoder_last_hidden_state: Optional[torch.FloatTensor] = None, 
+    # encoder_hidden_states: Optional[Tuple[torch.FloatTensor]] = None, 
+    # encoder_attentions: Optional[Tuple[torch.FloatTensor]] = None)
 
     def prepare_inputs_for_generation(
         self, input_ids, past=None, attention_mask=None, use_cache=None, encoder_outputs=None, **kwargs

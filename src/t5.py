@@ -1,11 +1,19 @@
 # based on: https://github.com/hmt2014/AspectQuad/blob/main/DLO/t5.py
+# import torch.nn as nn
+# import torch
+# from transformers.models.t5.modeling_t5 import *
+# from transformers.file_utils import ModelOutput
+# from transformers.generation_utils import *
+# from transformers.generation_beam_search import *
+# import copy
+
 import torch.nn as nn
 import torch
-from transformers.models.t5.modeling_t5 import *
+from transformers.models.t5.modeling_t5 import T5PreTrainedModel, T5Stack
 from transformers.file_utils import ModelOutput
-from transformers.generation_utils import *
-from transformers.generation_beam_search import *
+from transformers import Seq2SeqLMOutput, CrossEntropyLoss, add_start_docstrings, add_start_docstrings_to_model_forward, replace_return_docstrings
 import copy
+import warnings
 
 _CONFIG_FOR_DOC = "T5Config"
 

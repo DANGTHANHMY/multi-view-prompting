@@ -13,14 +13,12 @@ import torch
 import transformers
 from transformers.models.t5.modeling_t5 import T5PreTrainedModel, T5Stack
 from transformers.file_utils import ModelOutput
-from transformers import  add_start_docstrings, add_start_docstrings_to_model_forward, replace_return_docstrings
-# from .file_utils import (
-#     ModelOutput,
-#     add_code_sample_docstrings,
-#     add_start_docstrings,
-#     add_start_docstrings_to_callable,
-#     replace_return_docstrings,
-# )
+#from transformers import  add_start_docstrings, add_start_docstrings_to_model_forward, replace_return_docstrings
+from .file_utils import (
+    add_start_docstrings,
+    add_start_docstrings_to_model_forward,
+    replace_return_docstrings,
+)
 import copy
 import warnings
 

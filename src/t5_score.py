@@ -67,8 +67,8 @@ def calc_entropy(input_tensor):
     entropy = -p_log_p.sum()
     return entropy
 
-add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
-@add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
+# add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
+# @add_start_docstrings("""T5 Model with a `language modeling` head on top. """, T5_START_DOCSTRING)
 class MyT5ForConditionalGenerationScore(T5PreTrainedModel):
     authorized_missing_keys = [r"encoder\.embed_tokens\.weight", r"decoder\.embed_tokens\.weight", r"lm_head\.weight"]
 
@@ -110,8 +110,8 @@ class MyT5ForConditionalGenerationScore(T5PreTrainedModel):
     def get_decoder(self):
         return self.decoder
 
-    @add_start_docstrings_to_model_forward(T5_INPUTS_DOCSTRING)
-    @replace_return_docstrings(output_type=Seq2SeqLMOutput, config_class=_CONFIG_FOR_DOC)
+    # @add_start_docstrings_to_model_forward(T5_INPUTS_DOCSTRING)
+    # @replace_return_docstrings(output_type=Seq2SeqLMOutput, config_class=_CONFIG_FOR_DOC)
     def forward(
         self,
         input_ids=None,
@@ -251,7 +251,7 @@ class MyT5ForConditionalGenerationScore(T5PreTrainedModel):
             output = (lm_logits,) + decoder_outputs[1:] + encoder_outputs
             return ((loss,) + output) if loss is not None else output
 
-        return Seq2SeqLMOutput(
+        return transformers.modeling_outputs.Seq2SeqLMOutput(
             loss=loss,
             logits=lm_logits,
             past_key_values=decoder_outputs.past_key_values,
@@ -283,7 +283,7 @@ class MyT5ForConditionalGenerationScore(T5PreTrainedModel):
         # if decoder past is not included in output
         # speedy decoding is disabled and no need to reorder
         if past is None:
-            logger.warning("You might want to consider setting `use_cache=True` to speed up decoding")
+            #logger.warning("You might want to consider setting `use_cache=True` to speed up decoding")
             return past
 
         reordered_decoder_past = ()

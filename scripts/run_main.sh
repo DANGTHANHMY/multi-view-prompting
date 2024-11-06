@@ -34,7 +34,7 @@ python main.py \
     --dataset $DATA \
     --model_name_or_path t5-base \
     --output_dir $OUT_DIR \
-    --num_train_epochs 1 \
+    --num_train_epochs 20 \
     --save_top_k 0 \
     --task $TASK \
     --top_k $K \

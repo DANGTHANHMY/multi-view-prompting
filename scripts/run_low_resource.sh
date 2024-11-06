@@ -26,7 +26,7 @@ python main.py \
     --dataset $DATA \
     --model_name_or_path outputs/acos/rest16/top5_post_data1.0_seed${SEED}/final \
     --output_dir $OUT_DIR \
-    --num_train_epochs 1 \
+    --num_train_epochs 20 \
     --save_top_k 0 \
     --task $TASK \
     --top_k $K \

@@ -26,6 +26,7 @@ python main.py \
     --top_k $K \
     --ctrl_token $CTRL_TOKEN \
     --multi_path \
+    --beam_size 2 \
     --num_path $INFER_PATH \
     --seed $SEED \
     --train_batch_size 16 \

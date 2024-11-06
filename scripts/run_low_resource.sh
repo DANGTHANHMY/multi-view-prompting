@@ -2,7 +2,7 @@ set -ex
 
 export CUDA_VISIBLE_DEVICES=0
 
-cd src
+cd multi-view-prompting/src
 
 TASK=aste
 for DATA in laptop14

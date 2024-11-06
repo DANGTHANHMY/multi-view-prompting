@@ -2,7 +2,7 @@
 set -ex
 
 
-cd src
+cd multi-view-prompting/src
 
 
 for DATA in rest15

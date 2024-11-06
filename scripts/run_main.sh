@@ -8,7 +8,7 @@ TASK_DATA[acos]="laptop16 rest16"
 TASK_DATA[aste]="laptop14"
 TASK_DATA[tasd]="rest15 rest16"
 
-cd src
+cd multi-view-prompting/src
 
 # for SVP_TYPE in heuristic rand rank 
 for TASK in aste

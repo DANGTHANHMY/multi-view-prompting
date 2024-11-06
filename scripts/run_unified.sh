@@ -2,7 +2,7 @@ set -ex
 
 export CUDA_VISIBLE_DEVICES=0
 
-cd src
+cd multi-view-prompting/src
 
 for SEED in 5 10 15 20 25
 do

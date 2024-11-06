@@ -20,7 +20,7 @@ python main.py \
     --dataset seed$SEED \
     --model_name_or_path t5-base \
     --output_dir $OUT_DIR \
-    --num_train_epochs 20 \
+    --num_train_epochs 1 \
     --save_top_k 0 \
     --task $TASK \
     --top_k $K \
@@ -35,7 +35,7 @@ python main.py \
     --lowercase \
     --sort_label \
     --data_ratio 1.0 \
-    --check_val_every_n_epoch 10  \
+    --check_val_every_n_epoch 1  \
     --agg_strategy vote \
     --eval_batch_size 32 \
     --constrained_decode \

@@ -690,7 +690,7 @@ def train_function(args):
             'Note that a pretrained model is required and `do_true` should be False'
         )
         model_path = os.path.join(args.output_dir, "final")
-        # model_path = args.model_name_or_path  # for loading ckpt
+        model_path = args.model_name_or_path  # for loading ckpt
 
         tokenizer = T5Tokenizer.from_pretrained(model_path)
         tfm_model = MyT5ForConditionalGeneration.from_pretrained(model_path)

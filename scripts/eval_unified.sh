@@ -29,7 +29,7 @@ python main.py \
     --multi_path \
     --num_path $INFER_PATH \
     --seed $SEED \
-    --train_batch_size 16 \
+    --train_batch_size 8 \
     --gradient_accumulation_steps 1 \
     --learning_rate 1e-4 \
     --lowercase \
@@ -37,10 +37,11 @@ python main.py \
     --data_ratio 1.0 \
     --check_val_every_n_epoch 10  \
     --agg_strategy vote \
-    --eval_batch_size 128 \
+    --eval_batch_size 64 \
     --constrained_decode \
     --multi_task \
     > $OUT_DIR/eval.log
+    # eval_batch_size: 128
     # --do_train \
     # --load_ckpt_name "best.ckpt" \
     # --load_path_cache \

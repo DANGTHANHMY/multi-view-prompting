@@ -42,7 +42,7 @@ python main.py \
     --multi_path \
     --num_path $INFER_PATH \
     --seed $SEED \
-    --train_batch_size 16 \
+    --train_batch_size 8 \
     --gradient_accumulation_steps 1 \
     --learning_rate 1e-4 \
     --lowercase \
@@ -50,7 +50,7 @@ python main.py \
     --data_ratio $DATA_RATIO \
     --check_val_every_n_epoch 10  \
     --agg_strategy vote \
-    --eval_batch_size 64 \
+    --eval_batch_size 32 \
     --constrained_decode \
     --do_train \
     | tee ${OUT_DIR}/train.log \

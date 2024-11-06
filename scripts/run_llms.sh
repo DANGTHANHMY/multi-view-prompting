@@ -27,7 +27,7 @@ python -u llms/infer.py \
     --ctrl_token $CTRL_TOKEN \
     --num_path $INFER_PATH \
     --seed 0 \
-    --train_batch_size 16 \
+    --train_batch_size 8 \
     --gradient_accumulation_steps 1 \
     --learning_rate 1e-4 \
     --lowercase \

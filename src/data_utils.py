@@ -4,6 +4,7 @@ import numpy as np
 from itertools import permutations
 import torch
 from torch.utils.data import Dataset
+import ast
 # from transformers import AdamW, T5Tokenizer, T5ForConditionalGeneration
 
 from t5_score import MyT5ForConditionalGenerationScore
@@ -74,7 +75,7 @@ def read_line_examples_from_file(data_path,
             if line != '':
                 words, tuples = line.split('####')
                 sents.append(words.split())
-                labels.append(eval(tuples))
+                labels.append(ast.literal_eval(tuples))
     if silence:
         print(f"Total examples = {len(sents)}")
     return tasks, datas, sents, labels

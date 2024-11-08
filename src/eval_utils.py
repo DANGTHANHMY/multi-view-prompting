@@ -106,6 +106,8 @@ def compute_scores(pred_seqs, gold_seqs, verbose=True):
             print("pred ", pred_seqs[i])
             print()
 
+
+
         all_labels.append(gold_list)
         all_preds.append(pred_list)
 

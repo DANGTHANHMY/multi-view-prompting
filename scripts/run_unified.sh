@@ -15,6 +15,7 @@ OUT_DIR="../outputs/$TASK/top${K}_seed${SEED}"
 mkdir -p $OUT_DIR
 
 
+
 python main.py \
     --data_path "../data/" \
     --dataset seed$SEED \

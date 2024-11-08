@@ -29,7 +29,7 @@ python main.py \
     --multi_path \
     --num_path $INFER_PATH \
     --seed $SEED \
-    --train_batch_size 8 \
+    --train_batch_size 4 \
     --gradient_accumulation_steps 1 \
     --learning_rate 1e-4 \
     --lowercase \
@@ -37,7 +37,7 @@ python main.py \
     --data_ratio 1.0 \
     --check_val_every_n_epoch 1  \
     --agg_strategy vote \
-    --eval_batch_size 32 \
+    --eval_batch_size 8 \
     --constrained_decode \
     --multi_task \
     > $OUT_DIR/eval.log

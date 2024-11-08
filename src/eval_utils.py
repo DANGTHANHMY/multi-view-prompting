@@ -56,8 +56,11 @@ def compute_f1_scores(pred_pt, gold_pt, verbose=True):
     Function to compute F1 scores with pred and gold quads
     The input needs to be already processed
     """
+    # all_preds = pred_pt, all_labels = gold_pt
     # number of true postive, gold standard, predictions
     n_tp, n_gold, n_pred = 0, 0, 0
+    print('length of all_preds: ',len(pred_pt))
+    print('length of all_labels: ',len(gold_pt))
 
     for i in range(len(pred_pt)):
         n_gold += len(gold_pt[i])
@@ -71,7 +74,7 @@ def compute_f1_scores(pred_pt, gold_pt, verbose=True):
         print(
             f"number of gold spans: {n_gold}, predicted spans: {n_pred}, hit: {n_tp}"
         )
-
+    print('n_pred = ',n_pred, 'n_gold =', n_gold)
     precision = float(n_tp) / float(n_pred) if n_pred != 0 else 0
     recall = float(n_tp) / float(n_gold) if n_gold != 0 else 0
     f1 = 2 * precision * recall / (

@@ -75,7 +75,7 @@ def read_line_examples_from_file(data_path,
             if line != '':
                 words, tuples = line.split('####')
                 sents.append(words.split())
-                labels.append(ast.literal_eval(tuples))
+                labels.append(eval(tuples))
     if silence:
         print(f"Total examples = {len(sents)}")
     return tasks, datas, sents, labels

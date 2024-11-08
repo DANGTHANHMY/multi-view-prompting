@@ -42,7 +42,7 @@ python main.py \
     --data_ratio $DATA_RATIO \
     --check_val_every_n_epoch 1  \
     --agg_strategy vote \
-    --eval_batch_size 32 \
+    --eval_batch_size 16 \
     --constrained_decode \
     --do_train \
     # --load_path_cache \

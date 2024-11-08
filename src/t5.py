@@ -231,6 +231,7 @@ class MyT5ForConditionalGeneration(T5PreTrainedModel):
         if labels is not None:
             loss_fct = CrossEntropyLoss(ignore_index=-100)
             loss = loss_fct(lm_logits.view(-1, lm_logits.size(-1)), labels.view(-1))
+            # loss = loss_fct(logits.view(-1, logits.size(-1)), labels.view(-1))
             #lm_logits_max, lm_logits_max_index = torch.max(lm_logits, dim=-1)
 
         if not return_dict:

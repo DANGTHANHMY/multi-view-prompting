@@ -673,6 +673,9 @@ def train_function(args):
         )
 
         trainer = pl.Trainer(**train_params)
+        
+        for param in model.parameters():
+            param.requires_grad = True
 
         trainer.fit(model)
 

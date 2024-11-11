@@ -235,35 +235,18 @@ class MyT5ForConditionalGenerationScore(T5PreTrainedModel):
         sequence_output = sequence_output * (self.model_dim ** -0.5)
         lm_logits = self.lm_head(sequence_output)
 
-        # loss = None
-        # if labels is not None:
-        #     loss_fct = CrossEntropyLoss(ignore_index=-100, reduction="sum")
-        #     loss = []
-        #     entropy = []
-        #     for i in range(lm_logits.size()[0]):
-        #         loss_i = loss_fct(lm_logits[i], labels[i])
-        #         ent = calc_entropy(lm_logits[i, 0: decoder_attention_mask[i].sum().item()])
-        #         loss.append(loss_i.item())
-        #         entropy.append(ent.item())
-        #     loss = [loss, entropy]
-        #     # TODO(thom): Add z_loss https://github.com/tensorflow/mesh/blob/fa19d69eafc9a482aff0b59ddd96b025c0cb207d/mesh_tensorflow/layers.py#L666
         loss = None
         if labels is not None:
             loss_fct = CrossEntropyLoss(ignore_index=-100, reduction="sum")
-            loss_list = []
-            entropy_list = []
-            for i in range(lm_logits.size(0)):
+            loss = []
+            entropy = []
+            for i in range(lm_logits.size()[0]):
                 loss_i = loss_fct(lm_logits[i], labels[i])
-                ent = calc_entropy(lm_logits[i, :decoder_attention_mask[i].sum().item()])
-                loss_list.append(loss_i)
-                entropy_list.append(ent)
-
-            # Tổng hợp các giá trị loss thành một tensor duy nhất để tính gradient
-            loss = torch.stack(loss_list).sum()  # Tổng loss từ các giá trị loss_i
-            entropy = torch.stack(entropy_list).mean()  # Lấy trung bình entropy, nếu cần
-
-            # Nếu muốn cộng entropy vào loss để tính chung
-            loss = loss + entropy  # Hoặc chỉ giữ `loss = loss` nếu không cần entropy
+                ent = calc_entropy(lm_logits[i, 0: decoder_attention_mask[i].sum().item()])
+                loss.append(loss_i.item())
+                entropy.append(ent.item())
+            loss = [loss, entropy]
+            # TODO(thom): Add z_loss https://github.com/tensorflow/mesh/blob/fa19d69eafc9a482aff0b59ddd96b025c0cb207d/mesh_tensorflow/layers.py#L666
 
         if not return_dict:
             output = (lm_logits,) + decoder_outputs[1:] + encoder_outputs
